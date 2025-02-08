@@ -24,7 +24,7 @@ inputElement.addEventListener('keypress', (e) => {
             yesButton.classList.add('yes-button')
             yesButton.textContent = 'YES ❤️'
     
-            let noButton = document.createElement('button')
+            const noButton = document.createElement('button')
             noButton.classList.add('no-button')
             noButton.textContent = 'NO 💔'        
     
@@ -87,7 +87,8 @@ inputElement.addEventListener('keypress', (e) => {
                 } 
                 else if (noClickCount === 3) {
                     // Change both buttons to "YES ❤️"
-                    noButton = yesButton;
+                    noButton.textContent = "YES ❤️";
+                    yesButton.textContent = "YES ❤️";
                 }
             });
 
