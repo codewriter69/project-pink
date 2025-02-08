@@ -1,0 +1,183 @@
+/* Reset default margin and padding */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Full screen background with hearts */
+body {
+    background: url('https://www.transparenttextures.com/patterns/hearts.png'); /* Heart pattern */
+    background-color: #ffe6ea; /* Light pink */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Centered container */
+.container {
+    width: 50vw;
+    height: 50vh;
+    background: #ffccd5; /* Soft pink */
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    border-radius: 20px; /* Rounded corners */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 2; /* Ensure it's above hearts */
+}
+
+/* Floating hearts */
+body::before {
+    content: "💖 💕 💘 💓 💞 💝 ❤️ 💗";
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    opacity: 0.2;
+    animation: floatHearts 5s infinite alternate;
+}
+
+/* Animated rain of hearts */
+@keyframes rainOfHearts {
+    0% {
+        opacity: 1;
+        transform: translateY(-100px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh);
+    }
+}
+
+.falling-heart {
+    position: absolute;
+    font-size: 2rem;
+    animation: rainOfHearts 2s linear infinite;
+    animation-delay: calc(2s * var(--i)); /* Staggered fall effect */
+}
+
+/* Input box and prompt text */
+.passcode-prompt {
+    font-size: 1.5rem;
+    color: #ff3366; /* Deep pink */
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Input field */
+.passcode-key {
+    width: 80%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #ff3366;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Buttons container */
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+/* Yes Button */
+.yes-button, .no-button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Yes button styling */
+.yes-button {
+    background-color: #ff3366;
+    color: white;
+}
+
+.yes-button:hover {
+    background-color: #ff6699;
+}
+
+/* No button styling */
+.no-button {
+    background-color: #ffcc00;
+    color: white;
+}
+
+.no-button:hover {
+    background-color: #ffdd55;
+}
+
+/* Floating heart animation */
+@keyframes floatHearts {
+    0% {
+        transform: translateX(-50%) translateY(0);
+    }
+    100% {
+        transform: translateX(-50%) translateY(-20px);
+    }
+}
+
+
+
+
+/* Heart flying animation effect */
+@keyframes flyHearts {
+    0% {
+        transform: scale(1) translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0) translate(var(--x), var(--y));
+        opacity: 0;
+    }
+}
+
+.heart {
+    position: absolute;
+    font-size: 24px;
+    color: red;
+    animation: flyHearts 2s forwards;
+    pointer-events: none;
+    opacity: 1;
+}
+
+/* Styling for hearts */
+.heart::before {
+    content: "❤️";
+}
+
+/* Random heart paths */
+.heart:nth-child(1) {
+    --x: -150px;
+    --y: -100px;
+}
+.heart:nth-child(2) {
+    --x: 100px;
+    --y: -250px;
+}
+.heart:nth-child(3) {
+    --x: 200px;
+    --y: -180px;
+}
+.heart:nth-child(4) {
+    --x: -80px;
+    --y: -300px;
+}
+.heart:nth-child(5) {
+    --x: 50px;
+    --y: -200px;
+}
